@@ -1,0 +1,14 @@
+{
+	"name": "kodeio/twitter-scraper",
+	"license": "MIT", 
+    "author": {
+        "name": "Ali Hasan",
+        "email": "ali.h.bd@outlook.com"
+    },
+	"require": {
+		"paquettg/php-html-parser": "^1.7"
+	},
+    "autoload": {
+        "psr-4" : {"Kodeio\\TwitterScraper\\" : "src"}
+    }
+}
