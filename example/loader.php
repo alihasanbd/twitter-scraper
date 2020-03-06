@@ -9,3 +9,9 @@ spl_autoload_register(function ($class){
 		require_once($file);
 	}
 });
+
+function dd($var){
+	echo '<pre>';
+	print_r($var);
+	exit();
+}
