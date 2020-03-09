@@ -1,10 +1,16 @@
 {
 	"name": "kodeio/twitter-scraper",
 	"license": "MIT", 
-    "author": {
-        "name": "Ali Hasan",
-        "email": "ali.h.bd@outlook.com"
-    },
+    "author": [
+		{
+			"name": "Ali Hasan",
+			"email": "ali.h.bd@outlook.com"
+		},
+		{
+			"name": "Aminul Islam Mamun",
+			"email": "mamun.amin1994@gmail.com"
+		}
+	],
 	"require": {
 		"paquettg/php-html-parser": "^1.7"
 	},
