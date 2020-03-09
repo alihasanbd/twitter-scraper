@@ -22,11 +22,14 @@ class Scraper {
 	
 	private function get_feed()
 	{
-		//dd([$this->dom]);
-		
-		foreach($this->dom->find('li[data-item-type="tweet"] div.tweet') as $tweet) {
+		foreach($this->dom->find('div[class="content"]') as $a)
+		{
+			echo "<br>-------DATE--------------<br>";
+			echo $a->find('span[data-long-form="true"]');
 			
-			dd($tweet);
+			echo "<br>-------CONTENT--------------<br>";
+			echo $a->find('p[class="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"]');
+			echo "<br><br>";
 		}
 	}
 }
