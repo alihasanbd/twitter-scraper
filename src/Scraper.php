@@ -22,19 +22,18 @@ class Scraper {
 	
 	private function get_feed()
 	{
-		foreach($this->dom->find('div[class="content"]') as $a)
+		$results = array();
+		foreach($this->dom->find('div[class="content"]') as $tweet)
 		{
-			echo "<br>-------DATE--------------<br>";
-			echo $a->find('span[data-long-form="true"]');
-			
-			echo "<br>-------CONTENT--------------<br>";
-			echo $a->find('p[class="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"]');
+			$date = $tweet->find('a[class="tweet-timestamp js-permalink js-nav js-tooltip"]');
+			$content = $tweet->find('p[class="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"]');
 
-			echo "<br>-------Link--------------<br>";
-			if(count($a->find('a[class="twitter-timeline-link u-hidden"]')) >= 1) 
-				echo $a->find('a[class="twitter-timeline-link u-hidden"]');
-
-			echo "<br><br><br>";
+			$results[] = (object) array(
+				'date' => $date->getAttribute('title'),
+				'content' => $content->innerHtml,
+				'url' => 'https://twitter.com' . $date->getAttribute('href'),
+			);
 		}
+		return $results;
 	}
 }
