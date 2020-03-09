@@ -29,7 +29,12 @@ class Scraper {
 			
 			echo "<br>-------CONTENT--------------<br>";
 			echo $a->find('p[class="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"]');
-			echo "<br><br>";
+
+			echo "<br>-------Link--------------<br>";
+			if(count($a->find('a[class="twitter-timeline-link u-hidden"]')) >= 1) 
+				echo $a->find('a[class="twitter-timeline-link u-hidden"]');
+
+			echo "<br><br><br>";
 		}
 	}
 }
