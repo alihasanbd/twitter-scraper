@@ -25,13 +25,14 @@ class Scraper {
 		$results = array();
 		foreach($this->dom->find('div[class="content"]') as $tweet)
 		{
-			$date = $tweet->find('a[class="tweet-timestamp js-permalink js-nav js-tooltip"]');
+			$header = $tweet->find('a[class="tweet-timestamp js-permalink js-nav js-tooltip"]');
 			$content = $tweet->find('p[class="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text"]');
+			$date = \DateTime::createFromFormat('H:i A - d M Y', $header->getAttribute('title')); 
 
 			$results[] = (object) array(
-				'date' => $date->getAttribute('title'),
+				'date' => $date->format('Y-m-d H:i:s'),
 				'content' => $content->innerHtml,
-				'url' => 'https://twitter.com' . $date->getAttribute('href'),
+				'url' => 'https://twitter.com' . $header->getAttribute('href'),
 			);
 		}
 		return $results;
