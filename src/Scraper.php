@@ -30,9 +30,10 @@ class Scraper {
 			$date = \DateTime::createFromFormat('H:i A - d M Y', $header->getAttribute('title')); 
 
 			$results[] = (object) array(
-				'date' => $date->format('Y-m-d H:i:s'),
-				'content' => $content->innerHtml,
-				'url' => 'https://twitter.com' . $header->getAttribute('href'),
+				'tdate' => $date->format('Y-m-d H:i:s'),
+				'thtml' => $content->outerHtml(),
+				'content' => $content->text(true),
+				'turl' => 'https://twitter.com' . $header->getAttribute('href'),
 			);
 		}
 		return $results;
